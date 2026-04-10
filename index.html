@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Problem Solver</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: radial-gradient(circle at center, #1a202c 0%, #020617 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-2xl w-full glass-effect p-8 rounded-3xl shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                AI Problem Solver
+            </h1>
+            <p class="text-gray-400 mt-2">Apni samasya likhiye, AI solution dhoondhega.</p>
+        </div>
+
+        <div class="space-y-4">
+            <textarea id="userInput" rows="4" 
+                class="w-full p-4 rounded-xl bg-gray-900/50 border border-gray-700 focus:border-blue-500 focus:outline-none transition-all"
+                placeholder="Maslan: Mujhe ek diet plan chahiye ya Python code likhna hai..."></textarea>
+            
+            <button onclick="solveProblem()" 
+                class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold hover:scale-[1.02] transition-transform ai-glow">
+                Analyze & Solve
+            </button>
+        </div>
+
+        <div id="resultBox" class="mt-8 hidden animate-fade-in">
+            <div class="p-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <h3 class="text-blue-400 font-semibold mb-2">AI Solution:</h3>
+                    <p id="aiOutput" class="text-gray-300 leading-relaxed"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function solveProblem() {
+            const input = document.getElementById('userInput').value;
+            const resultBox = document.getElementById('resultBox');
+            const output = document.getElementById('aiOutput');
+
+            if (input.trim() === "") {
+                alert("Please enter a problem first!");
+                return;
+            }
+
+            // UI feedback
+            output.innerText = "Processing your request...";
+            resultBox.classList.remove('hidden');
+
+            // Simulate AI logic
+            setTimeout(() => {
+                output.innerText = "Aapne pucha: '" + input + "'. \n\nAnalysis: Yeh ek interesting sawal hai. \nSolution: [Yahan AI ka real response aayega]. Filhal, yeh interface design ready hai!";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
